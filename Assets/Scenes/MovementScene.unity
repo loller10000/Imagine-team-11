@@ -514,7 +514,8 @@ MonoBehaviour:
   maxAcceleration: 10
   maxAirAcceleration: 30.9
   jumpHeight: 2
-  maxAirJumps: 5
+  maxAirJumps: 0
+  maxGroundAngle: 40
   desiredJump: 0
   onGround: 0
   jumpPhase: 0
