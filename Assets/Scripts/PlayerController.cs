@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 contactNormal;
     private Rigidbody body;
     
-    private bool desiredJump;
-    [SerializeField] private bool onGround;
     private int jumpPhase;
+    private bool desiredJump;
+    
+    private int groundContactCount;
     private float minGroundDotProduct;
+    private bool OnGround => groundContactCount > 0;
 
     private void OnValidate()
     {
@@ -60,10 +62,14 @@ public class PlayerController : MonoBehaviour
     {
         velocity = body.linearVelocity;
 
-        if (onGround)
+        if (OnGround)
         {
             jumpPhase = 0;
-            contactNormal.Normalize();
+            
+            if (groundContactCount > 1)
+            {
+                contactNormal.Normalize();
+            }
         }
         
         else
@@ -85,7 +91,7 @@ public class PlayerController : MonoBehaviour
         var currentX = Vector3.Dot(velocity, xAxis);
         var currentZ = Vector3.Dot(velocity, zAxis);
 
-        var acceleration = onGround ? maxAcceleration : maxAirAcceleration;
+        var acceleration = OnGround ? maxAcceleration : maxAirAcceleration;
         var maxSpeedChange = acceleration * Time.deltaTime;
         
         var newX = Mathf.MoveTowards(currentX, desiredVelocity.x, maxSpeedChange);
@@ -96,7 +102,7 @@ public class PlayerController : MonoBehaviour
     
     private void Jump()
     {
-        if (onGround || jumpPhase < maxAirJumps)
+        if (OnGround || jumpPhase < maxAirJumps)
         {
             jumpPhase += 1;
             
@@ -114,7 +120,8 @@ public class PlayerController : MonoBehaviour
     
     private void ClearState()
     {
-        onGround = false;
+        // OnGround = false;
+        groundContactCount = 0;
         contactNormal = Vector3.zero;
     }
     
@@ -136,7 +143,8 @@ public class PlayerController : MonoBehaviour
             
             if (normal.y >= minGroundDotProduct)
             {
-                onGround = true;
+                // OnGround = true;
+                groundContactCount += 1;
                 contactNormal += normal;
             }
         }
