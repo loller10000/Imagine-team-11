@@ -516,9 +516,7 @@ MonoBehaviour:
   jumpHeight: 2
   maxAirJumps: 0
   maxGroundAngle: 40
-  desiredJump: 0
   onGround: 0
-  jumpPhase: 0
 --- !u!96 &991354776
 TrailRenderer:
   serializedVersion: 4
@@ -568,7 +566,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 5
+  m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
