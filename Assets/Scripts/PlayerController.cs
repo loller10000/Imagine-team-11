@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private int jumpPhase;
     private bool desiredJump;
     
-    private int groundContactCount;
+    [Header("Debug")]
+    [SerializeField] private int groundContactCount;
     private float minGroundDotProduct;
     private bool OnGround => groundContactCount > 0;
 
