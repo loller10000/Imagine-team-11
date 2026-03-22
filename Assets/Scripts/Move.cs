@@ -1,9 +1,7 @@
 using UnityEngine;
 
 public class Move : MonoBehaviour
-{
-    [SerializeField] private float speed = WorldMovement.Speed;
-    
+{   
     private void Update()
     {
         if (WorldMovement.Paused) 
@@ -11,7 +9,7 @@ public class Move : MonoBehaviour
             return; 
         }
 
-        transform.position += new Vector3(0, 0, -speed) * Time.deltaTime;
+        transform.position += new Vector3(0, 0, -WorldMovement.Speed) * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        WorldMovement.Speed = worldSpeed;   // Sync at start
         borderUIPanel.SetActive(false);
         ResumeGame();
     }
@@ -58,7 +59,8 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         distanceTraveled = 0f;
-        worldSpeed += 2f;
+        worldSpeed++; // +2 was too much
+        WorldMovement.Speed = worldSpeed;   // Sync after increase
 
         if (spawner != null) 
             spawner.NextVariant();
@@ -85,4 +87,8 @@ public class GameManager : MonoBehaviour
         borderUIPanel.SetActive(false);
         isPaused = false;
     }
+
+    // TODO: Add more worldSpeed syncs.
+    // For example increase per coin picked up:
+    // Would probably require a sync statement in the Update().
 }

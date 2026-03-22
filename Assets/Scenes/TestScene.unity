@@ -167,8 +167,8 @@ MonoBehaviour:
   - {fileID: 2122689430128149198, guid: a105f01141f0e27408fb1aac6489241a, type: 3}
   - {fileID: 2122689430128149198, guid: 154cdbcd498cab243977daaee17c14f5, type: 3}
   - {fileID: 2122689430128149198, guid: def2f582b208dc147b746ed733e8720b, type: 3}
-  spawnPoint: {fileID: 1075068893}
-  sectionLength: 10
+  gapSize: 40
+  spawnDistance: 200
 --- !u!1 &160336687
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,8 +698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db388e6c2a161cc4f991f7d39d2da86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  worldSpeed: 10
-  borderDistance: 50
+  worldSpeed: 20
+  borderDistance: 500
   player: {fileID: 6732512520143473572}
   borderUIPanel: {fileID: 1173883592}
   spawner: {fileID: 97498306}
@@ -3102,7 +3102,7 @@ MonoBehaviour:
   maxAirAcceleration: 3.25
   jumpHeight: 1.75
   maxAirJumps: 1
-  maxGroundAngle: 40
+  maxGroundAngle: 45
   groundContactCount: 1
 --- !u!96 &8128881034991860020
 TrailRenderer:
