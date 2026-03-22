@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Controls the game loop: distance tracking, border triggers,
+/// difficulty scaling and notifies the spawner for a variant change.
+/// </summary>
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -7,6 +12,9 @@ public class GameManager : MonoBehaviour
     [Header("World Settings")]
     public float worldSpeed = 10f;          // current speed of moving objects
     public float borderDistance = 50f;      // distance to travel before border
+
+    [Header("Difficulty")]
+    public float speedIncrementPerBorder = 1f;
 
     [Header("References")]
     public PlayerController player;
@@ -59,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         distanceTraveled = 0f;
-        worldSpeed++; // +2 was too much
+        worldSpeed += speedIncrementPerBorder;
         WorldMovement.Speed = worldSpeed;   // Sync after increase
 
         if (spawner != null) 

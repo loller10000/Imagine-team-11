@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Automatically spawns sections ahead of the player to create an endless road.
+/// Sections are placed one after another, with optional gaps controlled by gapSize.
+/// </summary>
+
 public class Spawner : MonoBehaviour
 {
     [Header("Variants")]
@@ -46,7 +51,7 @@ public class Spawner : MonoBehaviour
         lastSpawned = Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 
-    // Called by GameManager when player continues
+    // Called by GameManager after a border is passed.
     public void NextVariant()
     {
         currentVariant++;
