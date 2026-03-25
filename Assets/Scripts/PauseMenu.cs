@@ -35,6 +35,12 @@ public class PauseMenu : MonoBehaviour
         container.SetActive(false);
         isPaused = false;
     }
+
+    // Won't work in editor, should in standalone build.
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     
     // I'll handle this in another class.
     //public void MainMenuButton()
