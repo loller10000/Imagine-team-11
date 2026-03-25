@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class ScoreUpdater : MonoBehaviour
+public class CoinSpinner : MonoBehaviour
 {
-    public static float playerCoins = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,6 +11,6 @@ public class ScoreUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(playerCoins);
+        
     }
 }

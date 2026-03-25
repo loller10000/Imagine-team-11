@@ -17,7 +17,7 @@ public class MoveCoin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            ScoreUpdater.playerScore += 100;
+            ScoreUpdater.playerCoins += 1;
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Destroy"))
