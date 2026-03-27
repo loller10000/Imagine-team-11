@@ -2978,7 +2978,7 @@ PrefabInstance:
     - target: {fileID: 6286222374796945479, guid: 5d164013b7f13854eb68490539203f94, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 6732512520143473572}
+      objectReference: {fileID: 1808476810}
     - target: {fileID: 6286222374796945479, guid: 5d164013b7f13854eb68490539203f94, type: 3}
       propertyPath: borderUIPanel
       value: 

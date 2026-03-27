@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 desiredVelocity;
     private Vector3 contactNormal;
     private Rigidbody body;
-    
+    private Animator animator;
+
     private int jumpPhase;
     private bool desiredJump;
     
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         OnValidate();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
         if (desiredJump)
         {
             desiredJump = false;
+            animator.SetTrigger("desiredJump");
             Jump();
         }
         
