@@ -58,8 +58,9 @@ public class PlayerController : MonoBehaviour
         if (desiredJump)
         {
             desiredJump = false;
-            animator.SetTrigger("desiredJump");
             Jump();
+
+            animator?.SetTrigger("desiredJump");
         }
         
         body.linearVelocity = velocity;
