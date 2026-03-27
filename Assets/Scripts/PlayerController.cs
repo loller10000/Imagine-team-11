@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isPaused)
+            return; 
+
         Vector2 playerInput;
         playerInput.x = Input.GetAxis("Horizontal");
         playerInput.y = Input.GetAxis("Vertical");
