@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.isPaused)
+        if (PauseMenu.isPaused || WorldMovement.Paused)
             return; 
 
         Vector2 playerInput;
@@ -156,27 +156,5 @@ public class PlayerController : MonoBehaviour
                 contactNormal += normal;
             }
         }
-    }
-
-    private void Move()
-    {
-        Vector2 playerInput;
-        playerInput.x = Input.GetAxis("Horizontal");
-        playerInput.y = Input.GetAxis("Vertical");
-        // playerInput.Normalize(); // More limited movement. 
-        playerInput = Vector2.ClampMagnitude(playerInput, 1f);
-        
-        desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
-        var maxSpeedChange = maxAcceleration * Time.deltaTime;
-        
-        velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
-        velocity.z = Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
-        
-        var displacement = velocity * Time.deltaTime;
-        var newPosition = transform.localPosition + displacement;
-        
-        //transform.localPosition = new Vector3(playerInput.x, 0.5f, playerInput.y);
-        
-        transform.localPosition = newPosition;
     }
 }
