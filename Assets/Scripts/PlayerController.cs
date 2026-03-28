@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 desiredVelocity;
     private Vector3 contactNormal;
     private Rigidbody body;
-    
+    private Animator animator;
+
     private int jumpPhase;
     private bool desiredJump;
     
@@ -31,11 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         OnValidate();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        if (PauseMenu.isPaused)
+        if (PauseMenu.isPaused || WorldMovement.Paused)
             return; 
 
         Vector2 playerInput;
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour
         {
             desiredJump = false;
             Jump();
+
+            animator?.SetTrigger("desiredJump");
         }
         
         body.linearVelocity = velocity;
@@ -152,27 +157,5 @@ public class PlayerController : MonoBehaviour
                 contactNormal += normal;
             }
         }
-    }
-
-    private void Move()
-    {
-        Vector2 playerInput;
-        playerInput.x = Input.GetAxis("Horizontal");
-        playerInput.y = Input.GetAxis("Vertical");
-        // playerInput.Normalize(); // More limited movement. 
-        playerInput = Vector2.ClampMagnitude(playerInput, 1f);
-        
-        desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
-        var maxSpeedChange = maxAcceleration * Time.deltaTime;
-        
-        velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
-        velocity.z = Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
-        
-        var displacement = velocity * Time.deltaTime;
-        var newPosition = transform.localPosition + displacement;
-        
-        //transform.localPosition = new Vector3(playerInput.x, 0.5f, playerInput.y);
-        
-        transform.localPosition = newPosition;
     }
 }

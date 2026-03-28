@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float speedIncrementPerBorder = 1f;
 
     [Header("References")]
-    public PlayerController player;
+    // public PlayerController player;
     public GameObject borderUIPanel;        // Canvas with Continue/Quit buttons
     public Spawner spawner;
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         WorldMovement.Paused = true;
 
-        player.enabled = false;
+        // player.enabled = false;
         borderUIPanel.SetActive(true);
     }
 
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             spawner.NextVariant();
 
         WorldMovement.Paused = false;
-        player.enabled = true;
+        //player.enabled = true;
 
         borderUIPanel.SetActive(false);
         isPaused = false;
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     {
         distanceTraveled = 0f;
         WorldMovement.Paused = false;
-        player.enabled = true;
+        // player.enabled = true;
         borderUIPanel.SetActive(false);
         isPaused = false;
     }
