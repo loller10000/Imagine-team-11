@@ -1,4 +1,5 @@
-using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,11 @@ public class SceneLoader : MonoBehaviour
     {
         print(currentSceneName);
         Time.timeScale = 1;
+
+        if (currentSceneName == "Cutscene01")
+        {
+            StartCoroutine(IntroSequence());
+        }
     }
 
     private void Update()
@@ -50,6 +56,12 @@ public class SceneLoader : MonoBehaviour
     private void ReloadScene()
     {
         SceneManager.LoadScene(currentSceneName);
+    }
+
+    private IEnumerator IntroSequence()
+    {
+        yield return new WaitForSeconds(15);
+        SceneManager.LoadScene("MainMenu");
     }
     
 }

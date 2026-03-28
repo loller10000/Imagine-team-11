@@ -11,7 +11,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject cutscene02;
     [SerializeField] private GameObject cutscene03;
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     cutscene02.SetActive(true);
+    // }
+    
+    // TODO: Consider if this logic stay in Awake or move to Start.
+    
+    private void Start()
     {
         cutscene02.SetActive(true);
     }
@@ -29,7 +36,7 @@ public class MainMenu : MonoBehaviour
         // TODO: Implement logic that plays Cutscene 3. After ~22 seconds.
         // TODO: Implement Cutscene 3 transitioning to Main Game Scene after ~15 sec.
         
-        yield return new WaitForSeconds(15); 
+        yield return new WaitForSeconds(15.5f); 
         SceneLoader.LoadScene(targetScene);
     }
 
