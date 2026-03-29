@@ -1,17 +1,16 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreUpdater : MonoBehaviour
 {
     public static float playerCoins = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] public TMP_Text score;
 
     // Update is called once per frame
     void Update()
     {
-        print(playerCoins);
+        
+        score.SetText(playerCoins.ToString());
     }
 }
