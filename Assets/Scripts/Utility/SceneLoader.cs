@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,16 @@ public class SceneLoader : MonoBehaviour
 
     // Persistant instance of this GameObject across scenes.
     private static SceneLoader Instance { get; set; }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void Awake()
     {
@@ -40,8 +51,6 @@ public class SceneLoader : MonoBehaviour
 
     private void Update()
     {
-        
-        
         // if (Input.GetKey(KeyCode.Backspace))
         // {
         //     ReloadCurrentScene();
@@ -62,6 +71,26 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    // Hardcoded scene, don't forget to adjust eventually
+    private IEnumerator TransitionToGameplay()
+    {
+        yield return new WaitForSeconds(15.5f);
+        SceneManager.LoadScene("TestScene"); 
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene Loaded: " + scene.name);
+        currentSceneName = scene.name;
+        
+        Debug.Log("Load Mode: " + mode);
+        
+        if (currentSceneName == "Cutscene03")
+        {
+            StartCoroutine(TransitionToGameplay());
+        }
     }
     
 }

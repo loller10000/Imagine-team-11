@@ -11,23 +11,25 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject cutscene02;
     [SerializeField] private GameObject cutscene03;
 
-    // private void Awake()
-    // {
-    //     cutscene02.SetActive(true);
-    // }
-    
-    // TODO: Consider if this logic stay in Awake or move to Start.
-    
-    private void Start()
+    private void Awake()
     {
         cutscene02.SetActive(true);
     }
+    
+    // TODO: Consider if this logic stay in Awake or move to Start.
+    
+    // private void Start()
+    // {
+    //     cutscene02.SetActive(true);
+    // }
 
     public void StartGame()
     {
-        StartCoroutine(StartButton());
+        // StartCoroutine(StartButton());
+        SceneLoader.LoadScene(targetScene);
     }
 
+    // This function is if both menus are in the same scene.
     private IEnumerator StartButton()
     {
         cutscene02.SetActive(false);
