@@ -21,19 +21,19 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+    
+    public void ResumeButton()
+    {
+        Time.timeScale = 1;
+        container.SetActive(false);
+        isPaused = false;
+    }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
         container.SetActive(true);
         isPaused = true;
-    }
-
-    public void ResumeButton()
-    {
-        Time.timeScale = 1;
-        container.SetActive(false);
-        isPaused = false;
     }
 
     // Won't work in editor, should in standalone build.
