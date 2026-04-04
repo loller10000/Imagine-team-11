@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     //[SerializeField] private SceneLoader sceneLoader;
     [SerializeField] private string targetScene;
-
+    [SerializeField] private FadingScript fader;
     [SerializeField] private GameObject cutscene02;
     [SerializeField] private GameObject cutscene03;
 
@@ -18,10 +18,10 @@ public class MainMenu : MonoBehaviour
     
     // TODO: Consider if this logic stay in Awake or move to Start.
     
-    // private void Start()
-    // {
-    //     cutscene02.SetActive(true);
-    // }
+    private void Start()
+    {
+        StartCoroutine(FadeIntoMainMenu());
+    }
 
     public void StartGame()
     {
@@ -40,6 +40,12 @@ public class MainMenu : MonoBehaviour
         
         yield return new WaitForSeconds(15.5f); 
         SceneLoader.LoadScene(targetScene);
+    }
+
+    private IEnumerator FadeIntoMainMenu()
+    {
+        yield return new WaitForSeconds(21);
+        fader.FadeOut();
     }
 
     public void SettingsButton()
