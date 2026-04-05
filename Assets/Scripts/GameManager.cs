@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (!Instance) Instance = this;
         else Destroy(gameObject);
     }
 
@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
 
     private void EnterBorder()
     {
+        // If player is not grounded, wait until he is to continue.
+        if(player.Gcc == 0)
+            return;
+        
         isPaused = true;
         WorldMovement.Paused = true;
 
@@ -70,8 +74,7 @@ public class GameManager : MonoBehaviour
         worldSpeed += speedIncrementPerBorder;
         WorldMovement.Speed = worldSpeed;   // Sync after increase
 
-        if (spawner != null) 
-            spawner.NextVariant();
+        spawner?.NextVariant();
 
         WorldMovement.Paused = false;
         player.enabled = true;

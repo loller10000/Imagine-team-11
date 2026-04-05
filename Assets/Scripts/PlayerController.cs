@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Ground Contact Count's public getter.
+    public int Gcc { get; private set; }
+    
     [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f;
     [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f;
     [SerializeField, Range(0f, 100f)] private float maxAirAcceleration = 1f;
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
             if (groundContactCount > 1)
             {
                 contactNormal.Normalize();
+                Gcc = groundContactCount;
             }
         }
         
@@ -131,6 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         // OnGround = false;
         groundContactCount = 0;
+        Gcc = groundContactCount;
         contactNormal = Vector3.zero;
     }
     
@@ -155,6 +160,7 @@ public class PlayerController : MonoBehaviour
                 // OnGround = true;
                 groundContactCount += 1;
                 contactNormal += normal;
+                Gcc = groundContactCount;
             }
         }
     }
