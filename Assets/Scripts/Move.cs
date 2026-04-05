@@ -16,7 +16,6 @@ public class Move : MonoBehaviour
     //This destroys the walls at the end of the level for optimization
     private void OnTriggerEnter(Collider other)
     {
-       
         if (other.gameObject.CompareTag("Destroy"))
         {
             Destroy(gameObject);

@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         if (WorldMovement.Paused)
             return;
 
-        if (lastSpawned == null)
+        if (!lastSpawned)
         {
             SpawnSection(spawnDistance);
             return;
@@ -36,8 +36,7 @@ public class Spawner : MonoBehaviour
         var worldPosThreshold = lastSpawned.transform.position.z + gapSize;
         if (worldPosThreshold <= spawnDistance)
         {
-            var newSpawnPos = worldPosThreshold;
-            SpawnSection(newSpawnPos);
+            SpawnSection(worldPosThreshold);
         }
     }
 
@@ -46,7 +45,7 @@ public class Spawner : MonoBehaviour
         if (sectionPrefabs.Length == 0) 
             return;
 
-        GameObject prefab = sectionPrefabs[currentVariant];
+        var prefab = sectionPrefabs[currentVariant];
         var spawnPos = new Vector3(0, 0, zPos);
         lastSpawned = Instantiate(prefab, spawnPos, Quaternion.identity);
     }

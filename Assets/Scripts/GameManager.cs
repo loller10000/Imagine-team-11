@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float speedIncrementPerBorder = 1f;
 
     [Header("References")]
-    // public PlayerController player;
+    public PlayerController player;
     public GameObject borderUIPanel;        // Canvas with Continue/Quit buttons
     public Spawner spawner;
 
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (!Instance) Instance = this;
         else Destroy(gameObject);
     }
 
@@ -54,10 +54,14 @@ public class GameManager : MonoBehaviour
 
     private void EnterBorder()
     {
+        // If player is not grounded, wait until he is to continue.
+        if(player.Gcc == 0)
+            return;
+        
         isPaused = true;
         WorldMovement.Paused = true;
 
-        // player.enabled = false;
+        player.enabled = false;
         borderUIPanel.SetActive(true);
     }
 
@@ -70,11 +74,10 @@ public class GameManager : MonoBehaviour
         worldSpeed += speedIncrementPerBorder;
         WorldMovement.Speed = worldSpeed;   // Sync after increase
 
-        if (spawner != null) 
-            spawner.NextVariant();
+        spawner?.NextVariant();
 
         WorldMovement.Paused = false;
-        //player.enabled = true;
+        player.enabled = true;
 
         borderUIPanel.SetActive(false);
         isPaused = false;
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
     {
         distanceTraveled = 0f;
         WorldMovement.Paused = false;
-        // player.enabled = true;
+        player.enabled = true;
         borderUIPanel.SetActive(false);
         isPaused = false;
     }
