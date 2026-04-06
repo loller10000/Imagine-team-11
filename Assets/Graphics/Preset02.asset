@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AtmospherePreset
   sunIntensity: 0.45
   sunSize: 0.3
-  zenithColor: {r: 1, g: 0, b: 0, a: 0}
-  horizonColor: {r: 0, g: 1, b: 0, a: 0}
-  nadirColor: {r: 0, g: 0, b: 1, a: 0}
+  zenithColor: {r: 0.12709148, g: 0.19737834, b: 0.26415092, a: 0}
+  horizonColor: {r: 0.031238874, g: 0.097396284, b: 0.1273585, a: 0}
+  nadirColor: {r: 0, g: 0.019007614, b: 0.03773582, a: 0}
   cloudScatter: 0.504
   cloudDensity: 0.504
   panSpeed: {x: 0, y: 0}
