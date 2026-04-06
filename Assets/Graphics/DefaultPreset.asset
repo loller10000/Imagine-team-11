@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512f8fcf574f8d440a703ae1cef7b42d, type: 3}
   m_Name: DefaultPreset
   m_EditorClassIdentifier: Assembly-CSharp::AtmospherePreset
-  sunIntensity: 0.45
-  sunSize: 0.3
+  sunIntensity: 0.01
+  sunSize: 0.1
   zenithColor: {r: 0.4392157, g: 0.6509804, b: 0.6509804, a: 1}
   horizonColor: {r: 0.40392157, g: 0.5764706, b: 0.5686275, a: 1}
   nadirColor: {r: 0, g: 0.047058824, b: 0.047058824, a: 1}
   cloudScatter: 0.2
-  cloudDensity: 0.8
+  cloudDensity: 1
   panSpeed: {x: 0.05, y: 0.5}
   fogColor: {r: 0.61960787, g: 0.74509805, b: 0.9137255, a: 1}
   fogDensity: 0.025
