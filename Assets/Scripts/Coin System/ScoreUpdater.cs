@@ -4,13 +4,12 @@ using UnityEngine.UI;
 
 public class ScoreUpdater : MonoBehaviour
 {
-    public static float playerCoins = 0;
-    [SerializeField] public TMP_Text score;
+    public static int playerCoins = 0;
+    public TMP_Text score;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
         score.SetText(playerCoins.ToString());
     }
 }

@@ -125,7 +125,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2476812284574458365}
     m_Modifications:
     - target: {fileID: 1364660313113397324, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_Name
@@ -161,15 +161,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2411,6 +2411,25 @@ MonoBehaviour:
   transformZ: 30
   randomX1: -3
   randomX2: 2
+  lanePositions:
+  - -3
+  - 0
+  - 3
+  coinsPerSpawn: 2
+  patterns:
+  - lanes: 010101
+  - lanes: 010001
+  - lanes: 000100
+  - lanes: 010100
+  - lanes: 000101
+  - lanes: 000001
+  - lanes: 010000
+  - lanes: 000000
+--- !u!4 &1809178733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
+  m_PrefabInstance: {fileID: 81919717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1816582200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3265,6 +3284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3379957586895670079}
+  - {fileID: 1809178733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2491000845014164752
@@ -6090,6 +6110,7 @@ SceneRoots:
   - {fileID: 2476812284574458365}
   - {fileID: 519420032}
   - {fileID: 1379634594}
+  - {fileID: 1808476815}
   - {fileID: 3373671326283269706}
   - {fileID: 5267865448203955340}
   - {fileID: 1082874923086314497}
@@ -6101,7 +6122,5 @@ SceneRoots:
   - {fileID: 1174536835}
   - {fileID: 497995963}
   - {fileID: 367534882}
-  - {fileID: 1808476815}
   - {fileID: 8045667511471417398}
   - {fileID: 6315744226896010525}
-  - {fileID: 81919717}
