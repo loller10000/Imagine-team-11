@@ -1,4 +1,3 @@
-using Unity.VectorGraphics;
 using UnityEngine;
 
 public class Deathzone : MonoBehaviour

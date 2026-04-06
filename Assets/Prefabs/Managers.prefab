@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 84209742916637972}
   - component: {fileID: 6286222374796945479}
+  - component: {fileID: 8916543113582581639}
+  - component: {fileID: 1033306048378532259}
+  - component: {fileID: 7005498716359902057}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -29,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 980745073388142550}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6286222374796945479
@@ -46,52 +48,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   worldSpeed: 20
-  borderDistance: 500
+  borderDistance: 600
   speedIncrementPerBorder: 1
+  maxLives: 3
+  baseToll: 10
+  tollIncrement: 10
   player: {fileID: 0}
-  borderUIPanel: {fileID: 0}
-  spawner: {fileID: 6546469148189728181}
+  borderUIPanel: {fileID: 2650898189194979023, guid: 721970260bbd0ec4fb078284f3c0edb1, type: 3}
+  spawner: {fileID: 7005498716359902057}
   distanceTraveled: 0
   isPaused: 0
---- !u!1 &8391217826998839112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 980745073388142550}
-  - component: {fileID: 6546469148189728181}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &980745073388142550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391217826998839112}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 84209742916637972}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6546469148189728181
+  bordersPassed: 0
+--- !u!114 &8916543113582581639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391217826998839112}
+  m_GameObject: {fileID: 2242159051267765042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b183ce0598d02f43a993e33e88b1c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreUpdater
+  score: {fileID: 0}
+--- !u!114 &1033306048378532259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242159051267765042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c54443c1e84523b5ea005b866c3a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BorderUI
+  successPanel: {fileID: 0}
+  failPanel: {fileID: 0}
+  gameOverPanel: {fileID: 5440395106333924538, guid: 1be2b3ed4a2bc95459ce9af72fe19d45, type: 3}
+--- !u!114 &7005498716359902057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242159051267765042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ab6f936f3cdf194b9af1cb4d5f241e4, type: 3}
@@ -101,5 +103,5 @@ MonoBehaviour:
   - {fileID: 2122689430128149198, guid: a105f01141f0e27408fb1aac6489241a, type: 3}
   - {fileID: 2122689430128149198, guid: 154cdbcd498cab243977daaee17c14f5, type: 3}
   - {fileID: 2122689430128149198, guid: def2f582b208dc147b746ed733e8720b, type: 3}
-  gapSize: 40
+  gapSize: 45
   spawnDistance: 200

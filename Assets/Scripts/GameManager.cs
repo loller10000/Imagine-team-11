@@ -15,14 +15,24 @@ public class GameManager : MonoBehaviour
 
     [Header("Difficulty")]
     public float speedIncrementPerBorder = 1f;
+    
+    [Header("Lives")]
+    public int maxLives = 3;
+    private float coinsAtSectionStart;
+
+    [Header("Toll")] [Tooltip("Base coins required for the first border. Subsequent borders increase by this amount.")]
+    public int baseToll = 10;
+    public int tollIncrement = 10;          // each next border costs +10
 
     [Header("References")]
     public PlayerController player;
-    public GameObject borderUIPanel;        // Canvas with Continue/Quit buttons
+    public GameObject borderUIPanel;
     public Spawner spawner;
 
     [Header("Debug")]
     [SerializeField] private float distanceTraveled = 0f;
+    [SerializeField] private int bordersPassed = 0;
+    [SerializeField] private int currentLives;
     [SerializeField] private bool isPaused = false;
 
     private void Awake()
@@ -33,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        currentLives = maxLives;
+        
         WorldMovement.Speed = worldSpeed;   // Sync at start
         borderUIPanel.SetActive(false);
         ResumeGame();
@@ -60,9 +72,25 @@ public class GameManager : MonoBehaviour
         
         isPaused = true;
         WorldMovement.Paused = true;
-
         player.enabled = false;
         borderUIPanel.SetActive(true);
+        
+        var requiredCoins = baseToll + (bordersPassed * tollIncrement);
+        if (ScoreUpdater.playerCoins >= requiredCoins)
+        {
+            BorderUI.Instance.ShowSuccess(requiredCoins);
+        }
+        else
+        {
+            if (currentLives > 0)
+            {
+                BorderUI.Instance.ShowFailRetry(requiredCoins, currentLives);
+            }
+            else
+            {
+                BorderUI.Instance.ShowGameOver();
+            }
+        }
     }
 
     /// <summary>
@@ -70,6 +98,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ContinueGame()
     {
+        // Deduct the toll for this border
+        var requiredCoins = baseToll + (bordersPassed * tollIncrement);
+        ScoreUpdater.playerCoins -= requiredCoins;
+        Debug.Log($"Paid {requiredCoins} coins, Remaining: {ScoreUpdater.playerCoins}");
+        
+        bordersPassed++;
+        coinsAtSectionStart = ScoreUpdater.playerCoins;
+        
         distanceTraveled = 0f;
         worldSpeed += speedIncrementPerBorder;
         WorldMovement.Speed = worldSpeed;   // Sync after increase
@@ -93,10 +129,33 @@ public class GameManager : MonoBehaviour
     private void ResumeGame()
     {
         distanceTraveled = 0f;
+        bordersPassed = 0;
         WorldMovement.Paused = false;
         player.enabled = true;
         borderUIPanel.SetActive(false);
         isPaused = false;
+    }
+    
+    public void RetrySection()
+    {
+        currentLives--;
+
+        // Reset coins to checkpoint - No need to, too diff i think.
+        // ScoreUpdater.playerCoins = coinsAtSectionStart;
+
+        // Reset distance so player replays section
+        distanceTraveled = 0f;
+
+        WorldMovement.Paused = false;
+        player.enabled = true;
+
+        borderUIPanel.SetActive(false);
+        isPaused = false;
+    }
+
+    public void RetryNewGame()
+    {
+        SceneLoader.LoadScene("TestScene");
     }
 
     // TODO: Add more worldSpeed syncs.
