@@ -25,14 +25,14 @@ public class AtmospherePreset : ScriptableObject
     [Range(0, 1)] public float cloudDensity;
     public Vector2 panSpeed;
     
-    [Header("Clouds Worldspace")]
-    public float cloudPower;
-    public Vector2 cloudSpeed;
+    // [Header("Clouds Worldspace")]
+    // public float cloudPower;
+    // public Vector2 cloudSpeed;
 
     [Header("Fog")] 
     public Color fogColor;
     public float fogDensity;
 
-    [Header("Post Processing")] 
-    public VolumeProfile volumeProfile; // New method for PostFX
+    // [Header("Post Processing")] 
+    // public VolumeProfile volumeProfile; // New method for PostFX
 }

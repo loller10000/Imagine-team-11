@@ -64,7 +64,7 @@ Material:
     - _DistortSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _GroundColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _HorizonColor: {r: 0.6901961, g: 0.7764706, b: 0.8117647, a: 1}
-    - _MainLightDirection: {r: 0, g: -1.0000001, b: -0.00000011920929, a: 0}
+    - _MainLightDirection: {r: 0, g: -0.3420203, b: -0.93969274, a: 0}
     - _SkyColor: {r: 0.4509804, g: 0.5764706, b: 0.7019608, a: 1}
     - _SunColor: {r: 7.937255, g: 5.772549, b: 0.5960785, a: 0}
   m_BuildTextureStacks: []

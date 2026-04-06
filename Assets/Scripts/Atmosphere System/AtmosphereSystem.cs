@@ -13,15 +13,15 @@ using UnityEngine.Rendering.Universal;
 public class AtmosphereSystem : MonoBehaviour
 {
     public Material RuntimeSkybox => runtimeSkybox;
-    public Material RuntimeClouds => runtimeClouds;
+    // public Material RuntimeClouds => runtimeClouds;
 
     [Header("References")]
     [SerializeField] private Light sunLight;
     [SerializeField] private Material skyboxMaterial;
-    [SerializeField] private Material cloudMaterial;
-    [SerializeField] private MeshRenderer cloudsRenderer;
-    [SerializeField] private Volume volumeA;
-    [SerializeField] private Volume volumeB;
+    //[SerializeField] private Material cloudMaterial;
+    // [SerializeField] private MeshRenderer cloudsRenderer;
+    //[SerializeField] private Volume volumeA;
+    // [SerializeField] private Volume volumeB;
     
     [Header("Preset")]
     [SerializeField] private AtmospherePreset currentPreset;
@@ -47,22 +47,22 @@ public class AtmosphereSystem : MonoBehaviour
 
         // Clone materials for runtime use
         runtimeSkybox = new Material(skyboxMaterial);
-        runtimeClouds = new Material(cloudMaterial);
+        // runtimeClouds = new Material(cloudMaterial);
         
         // Apply runtime skybox & cache active
         RenderSettings.skybox = runtimeSkybox;
         runtimeSkybox = RenderSettings.skybox;
-        cloudsRenderer.sharedMaterial = runtimeClouds;
+        // cloudsRenderer.sharedMaterial = runtimeClouds;
         
         // Init volumes
-        activeVolume = volumeA;
-        targetVolume = volumeB;
+        // activeVolume = volumeA;
+        // targetVolume = volumeB;
 
-        activeVolume.weight = 0f;
-        targetVolume.weight = 0f;
+        // activeVolume.weight = 0f;
+        // targetVolume.weight = 0f;
 
-        activeVolume.profile = null;
-        targetVolume.profile = null;
+        // activeVolume.profile = null;
+        // targetVolume.profile = null;
     }
 
     private void Update()
@@ -99,7 +99,7 @@ public class AtmosphereSystem : MonoBehaviour
     // Other systems call these functions
     public void ApplyPreset(AtmospherePreset preset)
     {
-        if (preset == null)
+        if (!preset)
             return;
         
         ApplySky(preset);
@@ -110,14 +110,14 @@ public class AtmosphereSystem : MonoBehaviour
     
     public void TransitionTo(AtmospherePreset nextPreset, float duration)
     {
-        if (currentPreset == null)
+        if (!currentPreset)
         {
             currentPreset = nextPreset;
             ApplyPreset(nextPreset);
 
-            activeVolume.profile = nextPreset.volumeProfile;
-            activeVolume.weight = 1f;
-            targetVolume.weight = 0f;
+            //activeVolume.profile = nextPreset.volumeProfile;
+            //activeVolume.weight = 1f;
+            //targetVolume.weight = 0f;
             
             Debug.Log($"Atmosphere: Set initial preset to {nextPreset.name}");
             return;
@@ -125,7 +125,7 @@ public class AtmosphereSystem : MonoBehaviour
         
         if (duration <= 0f)
         {
-            activeVolume.profile = nextPreset.volumeProfile;
+            //activeVolume.profile = nextPreset.volumeProfile;
             activeVolume.weight = 1f;
             targetVolume.weight = 0f;
 
@@ -136,8 +136,8 @@ public class AtmosphereSystem : MonoBehaviour
         fromPreset = currentPreset;
         toPreset = nextPreset;
 
-        activeVolume.profile = currentPreset.volumeProfile;
-        targetVolume.profile = nextPreset.volumeProfile;
+        //activeVolume.profile = currentPreset.volumeProfile;
+        //targetVolume.profile = nextPreset.volumeProfile;
 
         blendTime = 0f;
         blendDuration = duration;
@@ -193,8 +193,8 @@ public class AtmosphereSystem : MonoBehaviour
         runtimeSkybox.SetVector("_CloudSpeed", p.panSpeed);
 
         // Optional: world-space clouds
-        runtimeClouds.SetFloat("_CloudsPower", p.cloudPower);
-        runtimeClouds.SetVector("_CloudSpeed", p.cloudSpeed);
+        //runtimeClouds.SetFloat("_CloudsPower", p.cloudPower);
+        //runtimeClouds.SetVector("_CloudSpeed", p.cloudSpeed);
     }
     
     private void ApplyFog(AtmospherePreset p)
@@ -228,8 +228,8 @@ public class AtmosphereSystem : MonoBehaviour
         runtimeSkybox.SetVector("_CloudSpeed",Vector2.Lerp(a.panSpeed, b.panSpeed, t));
         
         // ## WORLD-SPACE CLOUDS
-        runtimeClouds.SetFloat("_CloudsPower", Mathf.Lerp(a.cloudPower, b.cloudPower, t));
-        runtimeClouds.SetVector("_CloudSpeed", Vector2.Lerp(a.cloudSpeed, b.cloudSpeed, t));
+        //runtimeClouds.SetFloat("_CloudsPower", Mathf.Lerp(a.cloudPower, b.cloudPower, t));
+        //runtimeClouds.SetVector("_CloudSpeed", Vector2.Lerp(a.cloudSpeed, b.cloudSpeed, t));
 
         // ## FOG
         RenderSettings.fogColor = Color.Lerp(a.fogColor, b.fogColor, t);
