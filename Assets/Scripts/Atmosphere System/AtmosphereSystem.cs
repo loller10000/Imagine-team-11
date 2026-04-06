@@ -236,21 +236,21 @@ public class AtmosphereSystem : MonoBehaviour
         RenderSettings.fogDensity = Mathf.Lerp(a.fogDensity, b.fogDensity, t);
 
         // ## POST PROCESS (DUAL VOLUME BLEND)
-        activeVolume.weight = 1f - t;
-        targetVolume.weight = t;
+        // activeVolume.weight = 1f - t;
+        // targetVolume.weight = t;
         
-        if (t >= 1f) {
-            // Finalize
-            activeVolume.weight = 0f;
-            targetVolume.weight = 1f;
-
-            // Swap references (ping-pong)
-            (activeVolume, targetVolume) = (targetVolume, activeVolume);
-
-            // Cleanup
-            targetVolume.profile = null;
-            targetVolume.weight = 0f;
-        }
+        // if (t >= 1f) {
+        //     // Finalize
+        //     activeVolume.weight = 0f;
+        //     targetVolume.weight = 1f;
+        //
+        //     // Swap references (ping-pong)
+        //     (activeVolume, targetVolume) = (targetVolume, activeVolume);
+        //
+        //     // Cleanup
+        //     targetVolume.profile = null;
+        //     targetVolume.weight = 0f;
+        // }
     }
     #endregion
     
