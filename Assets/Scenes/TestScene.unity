@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: sunLight
       value: 
       objectReference: {fileID: 1379634593}
+    - target: {fileID: 3246012841399593598, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
+      propertyPath: presets.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246012841399593598, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
+      propertyPath: 'presets.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b74cda37630e4414cb220dcf5f70e57d, type: 2}
     - target: {fileID: 4001409982474329421, guid: 421af180942f7d74ba7e8018fd2465a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.79691

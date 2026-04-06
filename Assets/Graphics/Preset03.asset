@@ -17,8 +17,8 @@ MonoBehaviour:
   zenithColor: {r: 0, g: 0.25490198, b: 0.22741595, a: 0}
   horizonColor: {r: 0, g: 0.22745098, b: 0.20513827, a: 0}
   nadirColor: {r: 0, g: 0.077414, b: 0.084905684, a: 0}
-  cloudScatter: 0.504
-  cloudDensity: 0.504
-  panSpeed: {x: 0, y: 0}
-  fogColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-  fogDensity: 0.03
+  cloudScatter: 0.8
+  cloudDensity: 0.25
+  panSpeed: {x: 0.08, y: 0.08}
+  fogColor: {r: 0.61960787, g: 0.74509805, b: 0.9137255, a: 1}
+  fogDensity: 0.01
