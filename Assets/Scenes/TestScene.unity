@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 0467ccceccf96f44b8f634c86c0c8efa, type: 2}
   m_HaloStrength: 0.5
@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2122689430128149198, guid: def2f582b208dc147b746ed733e8720b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7543735760846048190, guid: def2f582b208dc147b746ed733e8720b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2349,6 +2349,11 @@ PrefabInstance:
 --- !u!4 &1067190362336526006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4841781087945284678, guid: c1949efd470e59a4093081921c23b44c, type: 3}
+  m_PrefabInstance: {fileID: 1067190362336526005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1067190362336526007 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2134277420065958154, guid: c1949efd470e59a4093081921c23b44c, type: 3}
   m_PrefabInstance: {fileID: 1067190362336526005}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1082874923086314497
@@ -5902,12 +5907,14 @@ MonoBehaviour:
   baseToll: 10
   tollIncrement: 10
   player: {fileID: 6840682425609101903}
+  playerAnim: {fileID: 1067190362336526007}
   borderUIPanel: {fileID: 4273474466942155067}
   spawner: {fileID: 8767928996003916124}
   distanceTraveled: 0
   bordersPassed: 0
   currentLives: 0
   isPaused: 0
+  borderReached: 0
 --- !u!224 &8618720148157185207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6020,9 +6027,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   sectionPrefabs:
-  - {fileID: 2122689430128149198, guid: a105f01141f0e27408fb1aac6489241a, type: 3}
-  - {fileID: 2122689430128149198, guid: 154cdbcd498cab243977daaee17c14f5, type: 3}
-  - {fileID: 2122689430128149198, guid: def2f582b208dc147b746ed733e8720b, type: 3}
+  - {fileID: 2122689430128149198, guid: b131377e7a33dc441baf276b61317dce, type: 3}
+  - {fileID: 2122689430128149198, guid: 580b0a5383e838a41bc39de1154af950, type: 3}
+  - {fileID: 2122689430128149198, guid: 117a963394a00ba44937a3acc1d7e2df, type: 3}
   gapSize: 45
   spawnDistance: 200
 --- !u!33 &8778584646161882353
