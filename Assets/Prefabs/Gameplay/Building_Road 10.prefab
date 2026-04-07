@@ -500,7 +500,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2600523571955302665}
   - component: {fileID: 2702689565993499258}
-  - component: {fileID: 3198851335343682459}
   - component: {fileID: 8526561608029780865}
   m_Layer: 0
   m_Name: Building_Road 10
@@ -549,18 +548,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3198851335343682459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2919100436308590267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28887c7a8fe28884ca481398d38facf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!54 &8526561608029780865
 Rigidbody:
   m_ObjectHideFlags: 0

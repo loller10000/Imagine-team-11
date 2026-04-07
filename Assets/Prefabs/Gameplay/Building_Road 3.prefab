@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2472080136405387298}
   - component: {fileID: 6813962186341324905}
-  - component: {fileID: 8896758557381909137}
   - component: {fileID: 545132587184779640}
   m_Layer: 0
   m_Name: Building_Road 3
@@ -171,18 +170,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8896758557381909137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103520833844713349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28887c7a8fe28884ca481398d38facf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!54 &545132587184779640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1086,7 +1073,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3628897368363918694}
   - component: {fileID: 2949859226191419229}
-  - component: {fileID: 285531059922647217}
   - component: {fileID: 6905704563644530606}
   m_Layer: 0
   m_Name: Building_Road 3 (1)
@@ -1135,18 +1121,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &285531059922647217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600491349833696720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28887c7a8fe28884ca481398d38facf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!54 &6905704563644530606
 Rigidbody:
   m_ObjectHideFlags: 0
