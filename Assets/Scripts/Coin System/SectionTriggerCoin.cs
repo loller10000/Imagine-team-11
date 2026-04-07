@@ -2,17 +2,29 @@ using UnityEngine;
 
 public class SectionTriggerCoin : MonoBehaviour
 {
-    public GameObject coin;
-    [SerializeField] private float transformZ = 8; // NEW DEFAULT
-    [SerializeField] private float randomX1 = 8; // NEW DEFAULT
-    [SerializeField] private float randomX2 = 8; // NEW DEFAULT
+    [Header("References")]
+    [SerializeField] private GameObject coin;
+    [SerializeField] private Transform[] lanePoints; // Replaces 'lanePositions[]'
     
-    // Variables for experimental new approaches
-    [SerializeField] private float[] lanePositions = { -3f, 0f, 3f };
-    [SerializeField] private int coinsPerSpawn = 2;
+    [Header("Spawn Settings")]
+    [SerializeField] private float forwardOffset = 30; // Renamed from 'transformZ'
     [SerializeField] private CoinPattern[] patterns;
     
-    // Uncomment to revert to original state of system.
+    // Method 0 Variables
+    private float randomX1; // -3
+    private float randomX2; // 3
+    
+    // Method 1-3 Variables
+    private float[] laneXPosition = { -3f, 0f, 3f };
+    private int coinsPerSpawn = 2;
+    private Vector3[] lanePositions =
+    {
+        new (-3f, 4f, 0f), 
+        new (0f, -1f, 0f), 
+        new (3f, 4f, 0f)
+    };
+    
+    // Uncomment to revert to original state of system. METHOD 0
     // private void OnTriggerEnter(Collider other)
     // {
     //     if (other.gameObject.CompareTag("Trigger"))
@@ -31,13 +43,21 @@ public class SectionTriggerCoin : MonoBehaviour
     {
         if (other.CompareTag("Trigger"))
         {
-            CoinPattern pattern = patterns[Random.Range(0, patterns.Length)];
+            // Safety checks
+            if (patterns.Length == 0) return;
+            if (lanePoints.Length == 0) return;
+            
+            // Picks a pattern at random
+            var pattern = patterns[Random.Range(0, patterns.Length)];
+            var laneCount = Mathf.Min(lanePoints.Length, pattern.lanes.Length);
 
-            for (int i = 0; i < lanePositions.Length; i++)
+            // Spawn Loop
+            for (int i = 0; i < laneCount; i++)
             {
                 if (pattern.lanes[i])
                 {
-                    Instantiate(coin, new Vector3(lanePositions[i], -1, transformZ), Quaternion.identity);
+                    var spawnPos = lanePoints[i].position + Vector3.forward * forwardOffset;
+                    Instantiate(coin, spawnPos, Quaternion.identity);
                 }
             }
             
@@ -56,6 +76,16 @@ public class SectionTriggerCoin : MonoBehaviour
             // {
             //     var lane =  lanePositions[Random.Range(0, lanePositions.Length)];
             //     Instantiate(coin, new Vector3(lane, -1, transformZ), Quaternion.identity);
+            // }
+            
+            // METHOD 3: FIXED LANE POSITIONS
+            // Uses hardcoded X positions, fixed Y.
+
+            // for (int i = 0; i < laneCount; i++)
+            // {
+            //     Instantiate(coin,
+            //     new Vector3(laneXPosition[i], -1f, forwardOffset),
+            //     Quaternion.identity);
             // }
         }
     }
